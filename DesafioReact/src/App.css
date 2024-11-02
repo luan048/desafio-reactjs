@@ -1,0 +1,38 @@
+.divHomePage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 38vh;
+}
+
+.elementsHomePage {
+    margin-top: -43px;
+}
+
+.pSearch {
+    font-style: italic;
+    font-size: 40px;
+    color: #3B4252;
+}
+
+.inputHomePage {
+    width: 400px;
+    height: 50px;
+    border-color: #3B4252;
+    border-radius: 5px;
+    font-family: italic;
+    font-size: 18px;
+    padding-left: 20px;
+}
+
+.buttonHomePage {
+    position: relative;
+    top: 2.5px;
+    width: 118px;
+    height: 53px;
+    background-color: #47525E;
+    color: #ECEFF4;
+    cursor: pointer;
+    font-size: 22px;
+    border-radius: 5px;
+}
