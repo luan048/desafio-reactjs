@@ -1,12 +1,18 @@
-.divHomePage {
+.divGeneral {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 38vh;
 }
 
+.divHomePage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .elementsHomePage {
-    margin-top: -43px;
+    margin-top: -35px;
 }
 
 .pSearch {
