@@ -1,3 +1,5 @@
+/*Inicio Home Page*/
+
 .divGeneral {
     display: flex;
     flex-direction: column;
@@ -42,3 +44,36 @@
     font-size: 22px;
     border-radius: 5px;
 }
+
+/*Fim Home Page*/
+
+/*Inicio User Page*/
+
+.divUserpage {
+    display: flex;
+}
+
+.leftColum {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 500px;
+    background-color: #3B4252;
+}
+
+.avatarUser {
+    height: 298px;
+    width: 298px;
+    margin: 0 auto;
+    margin-top: 60px;
+}
+
+.elementsLeftColum {
+    margin-top: 17px;
+    margin-left: 80px;
+}
+
+/*Fim User Page*/

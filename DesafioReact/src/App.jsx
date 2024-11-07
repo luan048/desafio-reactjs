@@ -6,9 +6,9 @@ import './App.css'
 function App() {
     // Funções para HomePage
     const [valueInput, setValueInput] = useState("");
-    const [valueUsername, setValueUsername] = useState("");
+    const [valueData, setValueData] = useState("");
 
-    const [showUser, setShowUser] = useState(true); //TRUE TEMPORÁRIO
+    const [showUser, setShowUser] = useState(false); //TRUE TEMPORÁRIO
 
     // Para valor mudar quando usuário digitar
     const handleInputChange = (e) => {
@@ -23,11 +23,11 @@ function App() {
 
         try {
             const response = await fetch(urlAPI)
-            if(!response.ok) throw new Error("Usuário não encontrado")
+            if (!response.ok) throw new Error("Usuário não encontrado")
             const data = await response.json()
-            setValueUsername(data.login)
+            setValueData(data)
         }
-        catch(error) {
+        catch (error) {
             alert(error.message)
             setShowUser(false)
         }
@@ -40,7 +40,7 @@ function App() {
     */
     const handleSubmit = async (e) => {
         e.preventDefault()
-        if(valueInput.trim() == "") {
+        if (valueInput.trim() == "") {
             alert("Campo vazio!")
             return;
         }
@@ -58,14 +58,14 @@ function App() {
                         <p className="pSearch">Search Devs</p>
                         <div className="elementsHomePage">
 
-                            <input 
+                            <input
                                 value={valueInput}
                                 onChange={handleInputChange}
                                 className="inputHomePage"
                                 type="text" placeholder="Type the username here..."
                             />
 
-                            <button 
+                            <button
                                 onClick={handleSubmit}
                                 className="buttonHomePage">
                                 <i className="fa-solid fa-magnifying-glass" /> Buscar
@@ -75,12 +75,21 @@ function App() {
                 ) :
 
 //              {/* User page */}
-                (
-                    <div>
-                        <p>TESTE</p>
-                        <p>{valueUsername}</p>
-                    </div>
-                )}
+                    (
+                        <div className="divUserpage">
+                            <div className="leftColum">
+                                <img src={valueData.avatar_url} className="avatarUser" />
+                                <div className="elementsLeftColum">
+                                    <h1 style={{fontSize: "40px", color: "#ECEFF4"}}>{valueData.name}</h1>
+                                    <p style={{fontSize: "28px", marginTop: "-20px", color: "#ECEFF4"}}>@{valueData.login}</p>
+                                </div>
+                            </div>
+
+                            <div className="rightColum">
+                                <p>TESTE2</p>
+                            </div>
+                        </div>
+                    )}
             </div>
         </>
     )
