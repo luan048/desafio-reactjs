@@ -82,6 +82,18 @@ function App() {
                                 <div className="elementsLeftColum">
                                     <h1 style={{fontSize: "40px", color: "#ECEFF4"}}>{valueData.name}</h1>
                                     <p style={{fontSize: "28px", marginTop: "-20px", color: "#ECEFF4"}}>@{valueData.login}</p>
+                                    <p style={{color: "#8190A5", fontSize: "18px"}}>{valueData.bio}</p>
+                                    <div style={{display: "flex", gap: "100px"}}>
+                                        <p 
+                                         style={{fontFamilly: "italic", fontSize: "20px", color: "#ECEFF4"}}>
+                                         {valueData.followers} followers
+                                        </p>
+
+                                        <p 
+                                         style={{fontFamilly: "italic", fontSize: "20px", color: "#ECEFF4"}}>
+                                         {valueData.following} following
+                                         </p>
+                                    </div>
                                 </div>
                             </div>
 
