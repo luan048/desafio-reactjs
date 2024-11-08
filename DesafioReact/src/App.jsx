@@ -86,12 +86,12 @@ function App() {
                                     <div style={{display: "flex", gap: "100px"}}>
                                         <p 
                                          style={{fontFamilly: "italic", fontSize: "20px", color: "#ECEFF4"}}>
-                                         {valueData.followers} followers
+                                         <i style={{fontSize: "16px"}} class="fa-solid fa-user-group"></i> {valueData.followers} followers
                                         </p>
 
                                         <p 
                                          style={{fontFamilly: "italic", fontSize: "20px", color: "#ECEFF4"}}>
-                                         {valueData.following} following
+                                         <i class="fa-solid fa-heart"></i> {valueData.following} following
                                          </p>
                                     </div>
                                 </div>
