@@ -77,26 +77,92 @@ function App() {
 //              {/* User page */}
                     (
                         <div className="divUserpage">
+
+                            {/* Left Colum */}
                             <div className="leftColum">
-                                <img src={valueData.avatar_url} className="avatarUser" />
+                                <img 
+                                    src={valueData.avatar_url} 
+                                    className="avatarUser" />
+
                                 <div className="elementsLeftColum">
-                                    <h1 style={{fontSize: "40px", color: "#ECEFF4"}}>{valueData.name}</h1>
-                                    <p style={{fontSize: "28px", marginTop: "-20px", color: "#ECEFF4"}}>@{valueData.login}</p>
-                                    <p style={{color: "#8190A5", fontSize: "18px"}}>{valueData.bio}</p>
-                                    <div style={{display: "flex", gap: "100px"}}>
-                                        <p 
-                                         style={{fontFamilly: "italic", fontSize: "20px", color: "#ECEFF4"}}>
-                                         <i style={{fontSize: "16px"}} class="fa-solid fa-user-group"></i> {valueData.followers} followers
+
+                                    {/* Info User Profile */}
+                                    <h1 
+                                        style={{ fontSize: "40px", color: "#ECEFF4" }}>
+                                        {valueData.name}
+                                    </h1>
+
+                                    <p 
+                                        style={{ fontSize: "28px", marginTop: "-20px", color: "#ECEFF4" }}>
+                                        @{valueData.login}
+                                    </p>
+
+                                    <p 
+                                        style={{ color: "#8190A5", fontSize: "18px" }}>
+                                        {valueData.bio}
+                                    </p>
+
+                                    <div style={{ display: "flex", gap: "100px" }}>
+                                        <p
+                                            style={{ fontFamilly: "italic", fontSize: "20px", color: "#ECEFF4" }}>
+
+                                            <i style={{ fontSize: "16px" }} class="fa-solid fa-user-group" /> {valueData.followers} followers
                                         </p>
 
-                                        <p 
-                                         style={{fontFamilly: "italic", fontSize: "20px", color: "#ECEFF4"}}>
-                                         <i class="fa-solid fa-heart"></i> {valueData.following} following
-                                         </p>
+                                        <p
+                                            style={{ fontFamilly: "italic", fontSize: "20px", color: "#ECEFF4" }}>
+
+                                            <i class="fa-solid fa-heart" /> {valueData.following} following
+                                        </p>
+                                    </div>
+
+                                    {/* User Social Midia and Info User*/}
+                                    <div style={{ marginTop: "58px" }}>
+                                        {valueData.company && ( // Verifica se o valor que está na API é null
+                                            <p 
+                                                className="pElementsSocialMidia" 
+                                                style={{ fontSize: "20px", color: "#ECEFF4" }}>
+ 
+                                                <i class="fa-solid fa-building" /> {valueData.company}
+                                            </p>
+                                        )}
+
+                                        {valueData.location && (
+                                            <p 
+                                                className="pElementsSocialMidia"
+                                                style={{ fontSize: "20px", color: "#ECEFF4" }}>
+                                                    
+                                                <i class="fa-solid fa-location-dot"/> {valueData.location}
+                                            </p>
+                                        )}
+
+                                        {valueData.email && (
+                                            <p 
+                                                className="pElementsSocialMidia"
+                                                style={{ fontSize: "20px", color: "#ECEFF4" }}>
+                                                
+                                                <i class="fa-sharp fa-solid fa-envelope" /> {valueData.email}
+                                            </p>
+                                        )}
+
+                                        {valueData.blog && (
+                                            <a 
+                                                href={valueData.blog}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                style={{fontSize: "20px", color: "#ECEFF4", cursor: "pointer", textDecoration: "none"}}>
+
+                                                <i className="fa-solid fa-link" /> {valueData.blog}
+
+                                            </a>
+                                        )}
                                     </div>
                                 </div>
+
+                                <button className="buttonBack" onClick={() => window.location.reload()}>Voltar</button>
                             </div>
 
+                            {/* Right Colum */}
                             <div className="rightColum">
                                 <p>TESTE2</p>
                             </div>
