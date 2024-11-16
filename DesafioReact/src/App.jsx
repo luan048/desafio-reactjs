@@ -60,6 +60,17 @@ function App() {
         setShowUser(true)
     }
 
+
+    const calculateDaysAgo = (dateString) => {
+        const updateDate = new Date(dateString) // Data do ultimo update
+        const currentDate = new Date() // Data Atual
+
+        const diffInMilliseconds = currentDate - updateDate // Em Milisegundos, trabalhado em JS
+        const diffInDays = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24)) // Convertido em Dias
+
+        return diffInDays
+    }
+
     return (
         <>
             <div className="divGeneral">
@@ -85,30 +96,30 @@ function App() {
                     </div>
                 ) :
 
-//              {/* User page */}
+                    //              {/* User page */}
                     (
                         <div className="divUserpage">
 
                             {/* Left Colum */}
                             <div className="leftColum">
-                                <img 
-                                    src={valueData.avatar_url} 
+                                <img
+                                    src={valueData.avatar_url}
                                     className="avatarUser" />
 
                                 <div className="elementsLeftColum">
 
                                     {/* Info User Profile */}
-                                    <h1 
+                                    <h1
                                         style={{ fontSize: "40px", color: "#ECEFF4" }}>
                                         {valueData.name}
                                     </h1>
 
-                                    <p 
+                                    <p
                                         style={{ fontSize: "28px", marginTop: "-20px", color: "#ECEFF4" }}>
                                         @{valueData.login}
                                     </p>
 
-                                    <p 
+                                    <p
                                         style={{ color: "#8190A5", fontSize: "18px" }}>
                                         {valueData.bio}
                                     </p>
@@ -130,38 +141,38 @@ function App() {
                                     {/* User Social Midia and Info User*/}
                                     <div style={{ marginTop: "58px" }}>
                                         {valueData.company && ( // Verifica se o valor que está na API é null
-                                            <p 
-                                                className="pElementsSocialMidia" 
+                                            <p
+                                                className="pElementsSocialMidia"
                                                 style={{ fontSize: "20px", color: "#ECEFF4" }}>
- 
+
                                                 <i class="fa-solid fa-building" /> {valueData.company}
                                             </p>
                                         )}
 
                                         {valueData.location && (
-                                            <p 
+                                            <p
                                                 className="pElementsSocialMidia"
                                                 style={{ fontSize: "20px", color: "#ECEFF4" }}>
-                                                    
-                                                <i class="fa-solid fa-location-dot"/> {valueData.location}
+
+                                                <i class="fa-solid fa-location-dot" /> {valueData.location}
                                             </p>
                                         )}
 
                                         {valueData.email && (
-                                            <p 
+                                            <p
                                                 className="pElementsSocialMidia"
                                                 style={{ fontSize: "20px", color: "#ECEFF4" }}>
-                                                
+
                                                 <i class="fa-sharp fa-solid fa-envelope" /> {valueData.email}
                                             </p>
                                         )}
 
                                         {valueData.blog && (
-                                            <a 
+                                            <a
                                                 href={valueData.blog}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                style={{fontSize: "20px", color: "#ECEFF4", cursor: "pointer", textDecoration: "none"}}>
+                                                style={{ fontSize: "20px", color: "#ECEFF4", cursor: "pointer", textDecoration: "none" }}>
 
                                                 <i className="fa-solid fa-link" /> {valueData.blog}
 
@@ -179,7 +190,9 @@ function App() {
                                     {valueRep.map((repo) => (
                                         <li key={repo.id}>
                                             <h1>{repo.name}</h1>
-                                            <p>{repo.stargazers_count} stars</p>
+                                            <p>{repo.stargazers_count} stars • Updated {calculateDaysAgo(repo.updated_at)}{' '}
+                                            {calculateDaysAgo(repo.updated_at) === 1 ? 'day' : 'days'} ago
+                                            </p>
                                         </li>
                                     ))}
                                 </ul>
