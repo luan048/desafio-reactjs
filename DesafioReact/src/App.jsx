@@ -7,6 +7,7 @@ function App() {
     // Funções para HomePage
     const [valueInput, setValueInput] = useState("");
     const [valueData, setValueData] = useState("");
+    const [valueRep, setValueRep] = useState("");
 
     const [showUser, setShowUser] = useState(false); //TRUE TEMPORÁRIO
 
@@ -20,12 +21,22 @@ function App() {
     async function searchUser() {
         const inputValue = valueInput
         const urlAPI = `https://api.github.com/users/${inputValue}`
+        const urlRepository = `https://api.github.com/users/${inputValue}/repos`
 
         try {
-            const response = await fetch(urlAPI)
-            if (!response.ok) throw new Error("Usuário não encontrado")
-            const data = await response.json()
+            const responseUser = await fetch(urlAPI) // Espera conectar com as infos do user
+            const responseRepo = await fetch(urlRepository) // Espera conectar com os repositorios do user
+
+            if (!responseUser.ok) throw new Error("Usuário não encontrado")
+
+            const data = await responseUser.json()
+            const dataRep = await responseRepo.json()
+
+            // Organiza os repositórios em ordem decrescente
+            const sortedRepo = dataRep.sort((a, b) => b.stargazers_count - a.stargazers_count)
+
             setValueData(data)
+            setValueRep(sortedRepo)
         }
         catch (error) {
             alert(error.message)
@@ -164,7 +175,14 @@ function App() {
 
                             {/* Right Colum */}
                             <div className="rightColum">
-                                <p>TESTE2</p>
+                                <ul>
+                                    {valueRep.map((repo) => (
+                                        <li key={repo.id}>
+                                            <h1>{repo.name}</h1>
+                                            <p>{repo.stargazers_count} stars</p>
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
                         </div>
                     )}

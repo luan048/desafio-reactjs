@@ -58,7 +58,7 @@
 .leftColum {
     display: flex;
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     height: 100%;
@@ -102,5 +102,13 @@
 }
 
 /*Fim Left Colum*/
+
+/*Inicio Right Colum*/
+
+.rightColum ul {
+    margin-top: -325px;
+}
+
+/*Fim Right Colum*/
 
 /*Fim User Page*/
