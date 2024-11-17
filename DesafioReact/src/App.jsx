@@ -65,7 +65,7 @@ function App() {
         const updateDate = new Date(dateString) // Data do ultimo update
         const currentDate = new Date() // Data Atual
 
-        const diffInMilliseconds = currentDate - updateDate // Em Milisegundos, trabalhado em JS
+        const diffInMilliseconds = currentDate - updateDate // JS tabalha com Milisegundos
         const diffInDays = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24)) // Convertido em Dias
 
         return diffInDays
@@ -189,9 +189,11 @@ function App() {
                                 <ul>
                                     {valueRep.map((repo) => (
                                         <li key={repo.id}>
-                                            <h1>{repo.name}</h1>
-                                            <p>{repo.stargazers_count} stars • Updated {calculateDaysAgo(repo.updated_at)}{' '}
-                                            {calculateDaysAgo(repo.updated_at) === 1 ? 'day' : 'days'} ago
+                                            <a href={`https://github.com/${repo.full_name}`} target="_blank" rel="noopener noreferrer" style={{textDecoration: "none"}}>
+                                                <h1 className="nameRepo">{repo.name}</h1>
+                                            </a>
+                                            <p className="infoRepo"><i class="fa-regular fa-star" /> {repo.stargazers_count} stars <a className="point">•</a> Updated {calculateDaysAgo(repo.updated_at)}{' '}
+                                                {calculateDaysAgo(repo.updated_at) === 1 ? 'day' : 'days'} ago
                                             </p>
                                         </li>
                                     ))}
