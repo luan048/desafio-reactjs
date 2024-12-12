@@ -9,7 +9,7 @@ function App() {
     const [valueData, setValueData] = useState("");
     const [valueRep, setValueRep] = useState("");
 
-    const [showUser, setShowUser] = useState(false); //TRUE TEMPORÁRIO
+    const [showUser, setShowUser] = useState(false);
 
     // Para valor mudar quando usuário digitar
     const handleInputChange = (e) => {
